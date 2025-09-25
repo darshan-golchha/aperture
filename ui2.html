@@ -5,15 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aperture - Patient Feedback Platform</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #8b5cf6;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 30%, #90caf9 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,10 +54,10 @@
         }
 
         .landing-header {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 25px 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -48,60 +72,63 @@
         .landing-logo {
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #1565c0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .landing-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1565c0;
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .landing-subtitle {
             font-size: 16px;
-            color: #1976d2;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 4px;
+            font-weight: 500;
         }
 
         .landing-main {
             flex: 1;
             display: flex;
             align-items: center;
-            justify-content: center;
             padding: 80px 40px;
             position: relative;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .landing-content {
-            text-align: center;
-            max-width: 800px;
+        .landing-left {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            z-index: 2;
         }
 
         .landing-avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            border: 6px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 60px rgba(21, 101, 192, 0.2);
-            margin: 0 auto 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 400px;
+            height: 400px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
-            animation: avatarPulse 3s ease-in-out infinite;
+            animation: avatarFloat 6s ease-in-out infinite;
         }
 
         .landing-avatar::before {
@@ -111,64 +138,74 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(25, 118, 210, 0.1));
-            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 30px;
         }
 
-        .avatar-icon {
+        .avatar-image {
+            width: 100%;
             height: 100%;
-            font-size: 80px;
-            color: #1565c0;
+            object-fit: cover;
+            border-radius: 30px;
             z-index: 1;
+            position: relative;
+        }
+
+        .landing-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 40px;
         }
 
         .landing-welcome {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1a237e;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .landing-description {
-            font-size: 20px;
-            color: #1565c0;
-            margin-bottom: 15px;
-            line-height: 1.5;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: 500;
         }
 
         .landing-subdescription {
-            font-size: 16px;
-            color: #1976d2;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 50px;
-            opacity: 0.8;
             line-height: 1.6;
+            font-weight: 400;
         }
 
         .begin-survey-btn {
-            background: linear-gradient(135deg, #2e7d32, #4caf50, #66bb6a);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
-            border-radius: 30px;
-            padding: 18px 40px;
+            border-radius: 20px;
+            padding: 20px 50px;
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
             position: relative;
             overflow: hidden;
-            min-width: 200px;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .begin-survey-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.4);
-            background: linear-gradient(135deg, #388e3c, #4caf50, #66bb6a);
-        }
-
-        .begin-survey-btn:active {
-            transform: translateY(-1px) scale(1.02);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
 
         .begin-survey-btn::before {
@@ -178,64 +215,17 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
         }
 
         .begin-survey-btn:hover::before {
             left: 100%;
         }
 
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-element {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .floating-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 60%;
-            right: 15%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            right: 20%;
-            animation: float 7s ease-in-out infinite;
-        }
-
-        @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(21, 101, 192, 0.2); }
-            50% { transform: scale(1.05); box-shadow: 0 25px 70px rgba(21, 101, 192, 0.3); }
-        }
-
-        @keyframes float {
+        @keyframes avatarFloat {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
         }
 
         /* Survey Page Styles */
@@ -246,9 +236,9 @@
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
@@ -264,48 +254,48 @@
         .logo {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #1565c0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
         }
 
         .title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1565c0;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
         }
 
         .subtitle {
             font-size: 14px;
-            color: #1976d2;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 2px;
+            font-weight: 500;
         }
 
         .header-right {
             display: flex;
             align-items: center;
             gap: 20px;
-            color: #1565c0;
+            color: white;
         }
 
         .progress-container {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 30px;
             padding: 8px;
-            width: 280px;
+            width: 300px;
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .progress-track {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             height: 12px;
             border-radius: 20px;
             position: relative;
@@ -313,28 +303,29 @@
         }
 
         .progress-bar {
-            background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a);
+            background: linear-gradient(90deg, var(--success), var(--accent));
             height: 100%;
             border-radius: 20px;
-            width: 42%;
+            width: 8.33%;
             transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 0 15px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
             position: relative;
         }
 
         .progress-text {
             font-size: 14px;
             font-weight: 600;
-            color: #1565c0;
+            color: white;
             margin-bottom: 4px;
         }
 
         .main-content {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 50px 40px 40px;
+            padding: 20px 40px 40px;
             position: relative;
         }
 
@@ -342,7 +333,7 @@
             position: relative;
             width: 100%;
             max-width: 1400px;
-            height: 550px;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -361,60 +352,56 @@
         .survey-card {
             position: absolute;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 25px 50px rgba(21, 101, 192, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-            transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .survey-card.current {
-            width: 700px;
-            height: fit-content;
-            padding: 30px 50px;
+            width: 800px;
+            min-height: 500px;
+            padding: 40px 60px;
             transform: translateX(0) scale(1);
             opacity: 1;
             z-index: 3;
-            box-shadow: 0 30px 60px rgba(21, 101, 192, 0.15);
-            cursor: default;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
         }
 
         .survey-card.prev,
         .survey-card.next {
-            width: 500px;
-            height: 350px;
+            width: 600px;
+            height: 400px;
             padding: 40px 30px;
-            opacity: 0.6;
+            opacity: 0.4;
             z-index: 2;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 15px 35px rgba(21, 101, 192, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .survey-card.prev {
-            transform: translateX(-320px) scale(0.85);
+            transform: translateX(-450px) scale(0.8);
         }
 
         .survey-card.next {
-            transform: translateX(320px) scale(0.85);
+            transform: translateX(450px) scale(0.8);
         }
 
         .survey-card.prev:hover,
         .survey-card.next:hover {
-            opacity: 0.8;
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateX(-320px) scale(0.9);
-            box-shadow: 0 20px 40px rgba(21, 101, 192, 0.12);
+            opacity: 0.7;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-450px) scale(0.85);
         }
 
         .survey-card.next:hover {
-            transform: translateX(320px) scale(0.9);
+            transform: translateX(450px) scale(0.85);
         }
 
         .survey-card.far-prev,
@@ -423,92 +410,25 @@
             pointer-events: none;
         }
 
-        /* Placeholder card styles */
-        .placeholder-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
-        }
-
-        .placeholder-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: rgba(21, 101, 192, 0.4);
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        .placeholder-text {
-            font-size: 18px;
-            font-weight: 500;
-            color: rgba(21, 101, 192, 0.3);
-            margin-bottom: 8px;
-        }
-
-        .placeholder-subtext {
-            font-size: 14px;
-            color: rgba(21, 101, 192, 0.25);
-            opacity: 0.8;
-        }
-
-        .placeholder-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 80%;
-            margin-top: 25px;
-        }
-
-        .placeholder-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            animation: shimmer 2s infinite;
-        }
-
-        .placeholder-bar:nth-child(1) { width: 100%; animation-delay: 0s; }
-        .placeholder-bar:nth-child(2) { width: 75%; animation-delay: 0.3s; }
-        .placeholder-bar:nth-child(3) { width: 90%; animation-delay: 0.6s; }
-        .placeholder-bar:nth-child(4) { width: 60%; animation-delay: 0.9s; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
         .question-number {
             display: inline-block;
-            background: linear-gradient(135deg, #1565c0, #1976d2);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 15px;
-            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
             margin-bottom: 30px;
             width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
 
         .question-text {
-            font-size: 32px;
-            font-weight: 600;
-            color: #1a237e;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gray-800);
             margin-bottom: 40px;
             line-height: 1.3;
         }
@@ -516,7 +436,7 @@
         .options-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
+            gap: 20px;
             margin-bottom: 30px;
         }
 
@@ -525,15 +445,15 @@
         }
 
         .option {
-            background: #f8f9fa;
-            border: 2px solid #e1f5fe;
-            border-radius: 18px;
-            padding: 20px 22px;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: 20px;
+            padding: 24px 28px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 17px;
-            font-weight: 500;
-            color: #1565c0;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-700);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -542,30 +462,34 @@
         }
 
         .option:hover {
-            background: #e3f2fd;
-            border-color: #1976d2;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.15);
+            background: rgba(99, 102, 241, 0.05);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
         }
 
         .option.selected {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
-            border-color: #2e7d32;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-color: var(--primary);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.4);
         }
 
         .option-icon {
             display: inline-block;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            border: 2px solid #90caf9;
-            margin-right: 14px;
+            border: 2px solid var(--gray-300);
+            margin-right: 16px;
             position: relative;
             transition: all 0.3s ease;
             flex-shrink: 0;
+        }
+
+        .option:hover .option-icon {
+            border-color: var(--primary);
         }
 
         .option.selected .option-icon {
@@ -579,12 +503,102 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #2e7d32;
-            font-size: 13px;
+            color: var(--primary);
+            font-size: 14px;
             font-weight: bold;
         }
 
-        /* Navigation Controls */
+        /* Slider Styles */
+        .slider-container {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--gray-50);
+            border-radius: 20px;
+            border: 2px solid var(--gray-200);
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .slider-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .slider-track {
+            position: relative;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 20px;
+            background: transparent;
+            outline: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* Navigation Styles */
         .survey-navigation {
             position: absolute;
             bottom: 20px;
@@ -593,7 +607,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             z-index: 10;
         }
 
@@ -604,82 +618,78 @@
         }
 
         .nav-btn {
-            background: linear-gradient(135deg, #1565c0, #1976d2);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
-            border-radius: 25px;
-            padding: 12px 24px;
-            font-size: 15px;
-            font-weight: 600;
+            border-radius: 20px;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 700;
             color: white;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
             display: flex;
             align-items: center;
             gap: 8px;
-            min-width: 120px;
+            min-width: 140px;
             justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .nav-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.3);
-            background: linear-gradient(135deg, #1976d2, #2196f3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
 
         .nav-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
             transform: none;
-            box-shadow: 0 2px 8px rgba(21, 101, 192, 0.1);
         }
 
         .nav-btn.submit-btn {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
         }
 
         .nav-btn.submit-btn:hover {
-            background: linear-gradient(135deg, #388e3c, #66bb6a);
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+            background: linear-gradient(135deg, #059669, #0891b2);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
         }
 
         .completion-indicator {
             display: flex;
             gap: 12px;
             align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 20px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .indicator-dot {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.3);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
-            position: relative;
-            border: 2px solid rgba(21, 101, 192, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .indicator-dot.active {
-            background: linear-gradient(135deg, #1565c0, #1976d2);
-            transform: scale(1.4);
-            box-shadow: 0 0 15px rgba(21, 101, 192, 0.4);
-            border-color: #1565c0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
         }
 
         .indicator-dot.completed {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(46, 125, 50, 0.3);
-            border-color: #2e7d32;
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
         }
 
         .indicator-dot.completed::after {
@@ -693,81 +703,90 @@
             font-weight: bold;
         }
 
-        .indicator-dot:hover:not(.active):not(.completed) {
-            transform: scale(1.3);
-            background: rgba(255, 255, 255, 0.6);
-            border-color: #1976d2;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .survey-card {
-            animation: slideIn 0.7s ease;
-        }
-
-        /* Navigation hint */
-        .nav-hint {
-            position: absolute;
-            bottom: 160px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #1565c0;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.7;
+        /* Placeholder card styles */
+        .placeholder-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
             text-align: center;
+        }
+
+        .placeholder-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .placeholder-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+
+        .placeholder-subtext {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 0.8; }
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .survey-card.current {
-                width: 600px;
-                padding: 40px 30px;
+            .landing-main {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
             }
             
-            .survey-card.prev,
-            .survey-card.next {
-                width: 450px;
-                height: 320px;
-                padding: 35px 25px;
+            .landing-right {
+                padding-left: 0;
+            }
+            
+            .landing-avatar {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .survey-card.current {
+                width: 700px;
+                padding: 30px 40px;
             }
             
             .question-text {
                 font-size: 28px;
             }
-            
-            .options-container {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
             .landing-welcome {
-                font-size: 36px;
+                font-size: 40px;
             }
-
+            
             .landing-description {
-                font-size: 18px;
+                font-size: 20px;
             }
-
+            
             .landing-avatar {
-                width: 150px;
-                height: 150px;
+                width: 250px;
+                height: 250px;
             }
-
-            .avatar-icon {
-                font-size: 60px;
-            }
-
+            
             .header {
                 padding: 15px 20px;
                 flex-direction: column;
@@ -775,34 +794,25 @@
             }
             
             .survey-card.current {
-                width: 450px;
-                padding: 30px 20px;
+                width: 500px;
+                padding: 25px 30px;
             }
             
             .survey-card.prev,
             .survey-card.next {
-                transform: translateX(-250px) scale(0.7);
+                transform: translateX(-280px) scale(0.7);
             }
             
             .survey-card.next {
-                transform: translateX(250px) scale(0.7);
+                transform: translateX(280px) scale(0.7);
             }
             
-            .main-content {
-                padding: 40px 20px 30px;
+            .options-container {
+                grid-template-columns: 1fr;
             }
             
             .progress-container {
-                width: 240px;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-btn {
-                width: 200px;
+                width: 250px;
             }
         }
     </style>
@@ -821,28 +831,22 @@
         </div>
 
         <div class="landing-main">
-            <div class="floating-elements">
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-            </div>
-
-            <div class="landing-content">
+            <div class="landing-left">
                 <div class="landing-avatar">
-                    <div class="avatar-icon">
-                        <img src="https://raw.githubusercontent.com/darshan-golchha/anajbz-images/refs/heads/main/portrait-3d-female-doctor_23-2151107332.jpeg" alt="User Icon" style="height: 100%;">
-                    </div>
+                    <img src="https://raw.githubusercontent.com/darshan-golchha/anajbz-images/refs/heads/main/portrait-3d-female-doctor_23-2151107332.jpeg" alt="Healthcare Professional" class="avatar-image">
                 </div>
-                
-                <h1 class="landing-welcome">Welcome to Your Health Journey</h1>
-                <p class="landing-description">Your voice matters in improving our healthcare services</p>
+            </div>
+            
+            <div class="landing-right">
+                <h1 class="landing-welcome">Transform Healthcare Together</h1>
+                <p class="landing-description">Your voice shapes the future of patient care</p>
                 <p class="landing-subdescription">
-                    Take a few minutes to share your experience and help us provide better care for everyone. 
-                    Your feedback is completely confidential and helps us understand what we're doing well and where we can improve.
+                    Join thousands of patients helping us deliver exceptional healthcare experiences. 
+                    Your feedback drives meaningful improvements in our services and care quality.
                 </p>
                 
                 <button class="begin-survey-btn" onclick="startSurvey()">
-                    Begin Survey
+                    Start Your Journey
                 </button>
             </div>
         </div>
@@ -860,7 +864,7 @@
             </div>
             
             <div class="header-right">
-                <div class="progress-text">Question 5 of 12</div>
+                <div class="progress-text">Question 1 of 12</div>
                 <div class="progress-container">
                     <div class="progress-track">
                         <div class="progress-bar"></div>
@@ -872,21 +876,12 @@
         <div class="main-content">
             <div class="carousel-container">
                 <div class="carousel-track">
-                    <!-- Previous Questions (Placeholder Cards) -->
                     <div class="survey-card far-prev"></div>
                     <div class="survey-card prev" onclick="previousQuestion()"></div>
-
-                    <!-- Current Question -->
                     <div class="survey-card current"></div>
-
-                    <!-- Next Questions (Placeholder Cards) -->
                     <div class="survey-card next" onclick="nextQuestion()"></div>
                     <div class="survey-card far-next"></div>
                 </div>
-            </div>
-
-            <div class="nav-hint">
-                Click on the side cards to navigate between questions
             </div>
 
             <div class="survey-navigation">
@@ -898,16 +893,16 @@
                         Next →
                     </button>
                     <button class="nav-btn submit-btn" id="submitBtn" onclick="submitSurvey()" style="display: none;">
-                        Complete Survey ✓
+                        Complete Survey
                     </button>
                 </div>
                 
                 <div class="completion-indicator">
-                    <div class="indicator-dot completed"></div>
-                    <div class="indicator-dot completed"></div>
-                    <div class="indicator-dot completed"></div>
-                    <div class="indicator-dot completed"></div>
                     <div class="indicator-dot active"></div>
+                    <div class="indicator-dot"></div>
+                    <div class="indicator-dot"></div>
+                    <div class="indicator-dot"></div>
+                    <div class="indicator-dot"></div>
                     <div class="indicator-dot"></div>
                     <div class="indicator-dot"></div>
                     <div class="indicator-dot"></div>
@@ -921,80 +916,107 @@
     </div>
 
     <script>
-        let currentQuestionIndex = 2; // 0-based index, currently showing question 5 (index 2)
+        let currentQuestionIndex = 0;
         
-        // Sample questions data (only used for current card)
+        // Complete questions data with slider questions for range values
         const questionsData = [
             {
                 number: 1,
                 text: "How long did you wait before seeing a healthcare provider?",
+                type: "multiple-choice",
                 options: ["Less than 15 minutes", "15-30 minutes", "30-60 minutes", "More than 1 hour"],
                 selected: -1
             },
             {
                 number: 2,
                 text: "How would you rate the cleanliness of our facility?",
+                type: "multiple-choice",
                 options: ["Excellent", "Good", "Fair", "Poor"],
                 selected: -1
             },
             {
                 number: 3,
-                text: "How would you rate your overall satisfaction with your recent visit?",
-                options: ["Excellent - Exceeded my expectations", "Good - Met my expectations", "Fair - Somewhat satisfied", "Poor - Did not meet expectations"],
+                text: "Rate your overall pain level during your visit",
+                type: "slider",
+                min: 0,
+                max: 10,
+                step: 1,
+                labels: ["No Pain", "Severe Pain"],
                 selected: -1
             },
             {
                 number: 4,
-                text: "Would you recommend our healthcare facility to friends and family?",
-                options: ["Definitely Yes", "Probably Yes", "Probably No", "Definitely No"],
+                text: "How satisfied are you with the quality of care received?",
+                type: "slider",
+                min: 0,
+                max: 100,
+                step: 5,
+                labels: ["Very Dissatisfied", "Very Satisfied"],
                 selected: -1
             },
             {
                 number: 5,
-                text: "How helpful was our staff in addressing your concerns?",
-                options: ["Very Helpful", "Somewhat Helpful", "Not Very Helpful", "Not Helpful at All"],
+                text: "Would you recommend our healthcare facility to friends and family?",
+                type: "multiple-choice",
+                options: ["Definitely Yes", "Probably Yes", "Probably No", "Definitely No"],
                 selected: -1
             },
             {
                 number: 6,
-                text: "How would you rate the communication from your healthcare provider?",
-                options: ["Excellent", "Good", "Fair", "Poor"],
+                text: "How helpful was our staff in addressing your concerns?",
+                type: "multiple-choice",
+                options: ["Very Helpful", "Somewhat Helpful", "Not Very Helpful", "Not Helpful at All"],
                 selected: -1
             },
             {
                 number: 7,
-                text: "Was the appointment scheduling process convenient for you?",
-                options: ["Very convenient", "Somewhat convenient", "Not very convenient", "Not convenient at all"],
+                text: "Rate the likelihood you would choose our facility again",
+                type: "slider",
+                min: 0,
+                max: 10,
+                step: 1,
+                labels: ["Very Unlikely", "Very Likely"],
                 selected: -1
             },
             {
                 number: 8,
-                text: "How satisfied were you with the waiting room environment?",
-                options: ["Very satisfied", "Somewhat satisfied", "Not very satisfied", "Not satisfied at all"],
+                text: "How would you rate the communication from your healthcare provider?",
+                type: "multiple-choice",
+                options: ["Excellent - Clear and thorough", "Good - Mostly clear", "Fair - Somewhat unclear", "Poor - Very unclear"],
                 selected: -1
             },
             {
                 number: 9,
-                text: "Did you feel your privacy was respected during your visit?",
-                options: ["Completely", "Mostly", "Somewhat", "Not at all"],
+                text: "How comfortable did you feel during your appointment?",
+                type: "slider",
+                min: 1,
+                max: 10,
+                step: 1,
+                labels: ["Very Uncomfortable", "Very Comfortable"],
                 selected: -1
             },
             {
                 number: 10,
-                text: "How clear were the instructions given to you about your treatment?",
-                options: ["Very clear", "Somewhat clear", "Not very clear", "Not clear at all"],
+                text: "Was the appointment scheduling process convenient for you?",
+                type: "multiple-choice",
+                options: ["Very convenient", "Somewhat convenient", "Not very convenient", "Not convenient at all"],
                 selected: -1
             },
             {
                 number: 11,
-                text: "How would you rate the billing and payment process?",
-                options: ["Excellent", "Good", "Fair", "Poor"],
+                text: "Rate the professionalism of our medical staff",
+                type: "slider",
+                min: 1,
+                max: 5,
+                step: 0.5,
+                labels: ["Unprofessional", "Highly Professional"],
                 selected: -1
             },
             {
                 number: 12,
-                text: "Overall, how likely are you to choose our facility again?",
-                options: ["Very likely", "Somewhat likely", "Not very likely", "Not likely at all"],
+                text: "How clear were the instructions given about your treatment?",
+                type: "multiple-choice",
+                options: ["Very clear and detailed", "Mostly clear", "Somewhat unclear", "Very confusing"],
                 selected: -1
             }
         ];
@@ -1003,7 +1025,6 @@
             document.getElementById('landingPage').style.display = 'none';
             document.getElementById('surveyPage').style.display = 'flex';
             
-            // Initialize survey
             currentQuestionIndex = 0;
             setTimeout(() => {
                 initializeCards();
@@ -1011,29 +1032,42 @@
         }
 
         function selectOption(element) {
-            // Only allow selection on current card
             const currentCard = document.querySelector('.survey-card.current');
             if (!currentCard.contains(element)) return;
             
-            // Remove selected class from all options in current card
             currentCard.querySelectorAll('.option').forEach(opt => {
                 opt.classList.remove('selected');
             });
             
-            // Add selected class to clicked option
             element.classList.add('selected');
             
-            // Update the selected option in questionsData
             const optionIndex = Array.from(currentCard.querySelectorAll('.option')).indexOf(element);
             questionsData[currentQuestionIndex].selected = optionIndex;
             
-            // Add selection animation
-            element.style.transform = 'translateY(-2px) scale(1.02)';
+            element.style.transform = 'translateY(-3px) scale(1.02)';
             setTimeout(() => {
-                element.style.transform = 'translateY(-2px)';
+                element.style.transform = 'translateY(-3px)';
             }, 150);
 
-            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        function updateSlider(value) {
+            questionsData[currentQuestionIndex].selected = parseFloat(value);
+            
+            const sliderValue = document.querySelector('.slider-value');
+            const sliderFill = document.querySelector('.slider-fill');
+            const questionData = questionsData[currentQuestionIndex];
+            
+            if (sliderValue) {
+                sliderValue.textContent = value;
+            }
+            
+            if (sliderFill) {
+                const percentage = ((value - questionData.min) / (questionData.max - questionData.min)) * 100;
+                sliderFill.style.width = percentage + '%';
+            }
+            
             updateNavigationButtons();
         }
 
@@ -1052,25 +1086,23 @@
         function animateCarousel(direction) {
             const cards = document.querySelectorAll('.survey-card');
             
-            // Add transitioning class to prevent clicks during animation
             document.body.classList.add('transitioning');
             
-            // Phase 1: Move cards to transition positions
             cards.forEach(card => {
                 card.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
                 
                 if (direction === 'next') {
                     if (card.classList.contains('current')) {
-                        card.style.transform = 'translateX(-320px) scale(0.85)';
-                        card.style.opacity = '0.6';
+                        card.style.transform = 'translateX(-350px) scale(0.8)';
+                        card.style.opacity = '0.4';
                     } else if (card.classList.contains('next')) {
                         card.style.transform = 'translateX(0) scale(1)';
                         card.style.opacity = '1';
                     }
                 } else {
                     if (card.classList.contains('current')) {
-                        card.style.transform = 'translateX(320px) scale(0.85)';
-                        card.style.opacity = '0.6';
+                        card.style.transform = 'translateX(350px) scale(0.8)';
+                        card.style.opacity = '0.4';
                     } else if (card.classList.contains('prev')) {
                         card.style.transform = 'translateX(0) scale(1)';
                         card.style.opacity = '1';
@@ -1078,19 +1110,15 @@
                 }
             });
             
-            // Phase 2: Update content and classes after position transition
             setTimeout(() => {
-                // Update current question index
                 if (direction === 'next') {
                     currentQuestionIndex++;
                 } else {
                     currentQuestionIndex--;
                 }
                 
-                // Update all card classes and content
                 updateAllCards();
                 
-                // Phase 3: Final position snap
                 setTimeout(() => {
                     cards.forEach(card => {
                         card.style.transition = 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -1098,7 +1126,6 @@
                         card.style.opacity = '';
                     });
                     
-                    // Update progress and remove transitioning class
                     setTimeout(() => {
                         updateProgress();
                         updateNavigationButtons();
@@ -1112,20 +1139,22 @@
             const cards = document.querySelectorAll('.survey-card');
             
             cards.forEach((card, index) => {
-                // Clear all classes
                 card.className = 'survey-card';
                 
-                // Determine position relative to current
-                const relativeIndex = index - currentQuestionIndex;
+                const relativeIndex = index - 2; // Middle card is index 2
+                const questionIndex = currentQuestionIndex + relativeIndex;
                 
-                // Add appropriate classes
                 if (relativeIndex < -1) {
                     card.classList.add('far-prev');
-                    setPlaceholderContent(card, 'Previous Question', 'Question content hidden', '📋');
+                    setPlaceholderContent(card, 'Previous Question', 'Navigate back', '📋');
                 } else if (relativeIndex === -1) {
                     card.classList.add('prev');
                     card.onclick = previousQuestion;
-                    setPlaceholderContent(card, 'Previous Question', 'Click to view previous', '📝');
+                    if (questionIndex >= 0) {
+                        setPlaceholderContent(card, `Question ${questionIndex + 1}`, 'Click to view previous', '📝');
+                    } else {
+                        setPlaceholderContent(card, 'Previous Question', 'No previous questions', '📋');
+                    }
                 } else if (relativeIndex === 0) {
                     card.classList.add('current');
                     card.onclick = null;
@@ -1133,10 +1162,14 @@
                 } else if (relativeIndex === 1) {
                     card.classList.add('next');
                     card.onclick = nextQuestion;
-                    setPlaceholderContent(card, 'Next Question', 'Click to continue', '➡️');
+                    if (questionIndex < questionsData.length) {
+                        setPlaceholderContent(card, `Question ${questionIndex + 1}`, 'Click to continue', '➡️');
+                    } else {
+                        setPlaceholderContent(card, 'Complete Survey', 'Click to finish', '✅');
+                    }
                 } else {
                     card.classList.add('far-next');
-                    setPlaceholderContent(card, 'Upcoming Question', 'Question content hidden', '📊');
+                    setPlaceholderContent(card, 'Upcoming Question', 'More questions ahead', '📊');
                 }
             });
         }
@@ -1144,34 +1177,56 @@
         function setCurrentContent(card) {
             const questionData = questionsData[currentQuestionIndex];
             
-            card.innerHTML = `
-                <div class="question-number">Question ${questionData.number}</div>
-                <div class="question-text">${questionData.text}</div>
-                <div class="options-container ${questionData.options.length > 2 ? 'single-column' : ''}">
-                    ${questionData.options.map((option, index) => `
-                        <div class="option ${questionData.selected === index ? 'selected' : ''}" onclick="selectOption(this)">
-                            <span class="option-icon"></span>
-                            ${option}
+            if (questionData.type === 'multiple-choice') {
+                card.innerHTML = `
+                    <div class="question-number">Question ${questionData.number}</div>
+                    <div class="question-text">${questionData.text}</div>
+                    <div class="options-container ${questionData.options.length > 2 ? 'single-column' : ''}">
+                        ${questionData.options.map((option, index) => `
+                            <div class="option ${questionData.selected === index ? 'selected' : ''}" onclick="selectOption(this)">
+                                <span class="option-icon"></span>
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (questionData.type === 'slider') {
+                const currentValue = questionData.selected !== -1 ? questionData.selected : questionData.min;
+                const percentage = ((currentValue - questionData.min) / (questionData.max - questionData.min)) * 100;
+                
+                card.innerHTML = `
+                    <div class="question-number">Question ${questionData.number}</div>
+                    <div class="question-text">${questionData.text}</div>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span style="font-size: 18px; font-weight: 600; color: var(--gray-700);">Your Rating:</span>
+                            <div class="slider-value">${currentValue}</div>
                         </div>
-                    `).join('')}
-                </div>
-            `;
+                        <div class="slider-track">
+                            <div class="slider-fill" style="width: ${percentage}%"></div>
+                            <input type="range" 
+                                   class="slider" 
+                                   min="${questionData.min}" 
+                                   max="${questionData.max}" 
+                                   step="${questionData.step}"
+                                   value="${currentValue}"
+                                   oninput="updateSlider(this.value)">
+                        </div>
+                        <div class="slider-labels">
+                            <span>${questionData.labels[0]}</span>
+                            <span>${questionData.labels[1]}</span>
+                        </div>
+                    </div>
+                `;
+            }
         }
 
         function setPlaceholderContent(card, title, subtitle, icon) {
-            const barsCount = Math.floor(Math.random() * 3) + 2; // 2-4 bars
-            const bars = Array.from({length: barsCount}, (_, i) => 
-                `<div class="placeholder-bar" style="width: ${60 + Math.random() * 40}%; animation-delay: ${i * 0.3}s;"></div>`
-            ).join('');
-            
             card.innerHTML = `
                 <div class="placeholder-card">
                     <div class="placeholder-icon">${icon}</div>
                     <div class="placeholder-text">${title}</div>
                     <div class="placeholder-subtext">${subtitle}</div>
-                    <div class="placeholder-bars">
-                        ${bars}
-                    </div>
                 </div>
             `;
         }
@@ -1185,7 +1240,6 @@
             progressBar.style.width = `${percentage}%`;
             progressText.textContent = `Question ${currentQuestion} of 12`;
             
-            // Update indicator dots
             const dots = document.querySelectorAll('.indicator-dot');
             dots.forEach((dot, index) => {
                 dot.className = 'indicator-dot';
@@ -1202,13 +1256,12 @@
             const nextBtn = document.getElementById('nextBtn');
             const submitBtn = document.getElementById('submitBtn');
             
-            // Update previous button
             prevBtn.disabled = currentQuestionIndex === 0;
             
-            // Show/hide next/submit button
             if (currentQuestionIndex === questionsData.length - 1) {
                 nextBtn.style.display = 'none';
                 submitBtn.style.display = 'block';
+                submitBtn.disabled = questionsData[currentQuestionIndex].selected === -1;
             } else {
                 nextBtn.style.display = 'block';
                 submitBtn.style.display = 'none';
@@ -1217,25 +1270,29 @@
         }
 
         function submitSurvey() {
-            // Check if current question is answered
             if (questionsData[currentQuestionIndex].selected === -1) {
                 return;
             }
 
-            // Show completion message
-            alert('Thank you for your feedback! Your responses have been submitted successfully.');
+            // Create summary of responses
+            let summary = "Survey Completed! Here's a summary of your responses:\n\n";
+            questionsData.forEach((q, index) => {
+                if (q.selected !== -1) {
+                    if (q.type === 'multiple-choice') {
+                        summary += `Q${q.number}: ${q.options[q.selected]}\n`;
+                    } else if (q.type === 'slider') {
+                        summary += `Q${q.number}: ${q.selected}/${q.max}\n`;
+                    }
+                }
+            });
+
+            alert(summary + "\nThank you for your valuable feedback! Your responses help us improve our healthcare services.");
             
-            // Reset to landing page (optional)
             setTimeout(() => {
                 document.getElementById('surveyPage').style.display = 'none';
                 document.getElementById('landingPage').style.display = 'flex';
                 currentQuestionIndex = 0;
-                
-                // Reset all selections
                 questionsData.forEach(q => q.selected = -1);
-                questionsData[0].selected = 0; // First question pre-selected
-                questionsData[1].selected = 0; // Second question pre-selected
-                questionsData[2].selected = 1; // Third question pre-selected
             }, 2000);
         }
 
@@ -1254,20 +1311,11 @@
             }
         });
 
-        // Initialize all cards on load
         function initializeCards() {
             updateAllCards();
             updateProgress();
             updateNavigationButtons();
         }
-
-        // Initialize progress animation
-        window.addEventListener('load', function() {
-            const progressBar = document.querySelector('.progress-bar');
-            if (progressBar) {
-                progressBar.style.width = '0%';
-            }
-        });
 
         // Touch/swipe support for mobile
         let startX = 0;
@@ -1285,17 +1333,14 @@
                 const diffX = startX - endX;
                 const diffY = startY - endY;
 
-                // Check if it's a horizontal swipe (more horizontal than vertical)
                 if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
                     if (diffX > 0) {
-                        // Swipe left - next question
                         if (currentQuestionIndex === questionsData.length - 1) {
                             submitSurvey();
                         } else {
                             nextQuestion();
                         }
                     } else {
-                        // Swipe right - previous question
                         previousQuestion();
                     }
                 }
